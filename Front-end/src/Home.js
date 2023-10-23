@@ -7,8 +7,6 @@ const Home = () => {
         <div>
             <AppNavbar />
             {/* Outros componentes e rotas */}
-        <Link to="/login">Login</Link>
-      <p></p>
             <Link to="/produtos/catalogo">Consulta catalogo de produtos</Link>
             <p></p>
             <Link to="/produtos/cadastrar">Cadastrar produto</Link>

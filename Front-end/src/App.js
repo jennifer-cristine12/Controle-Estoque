@@ -1,6 +1,5 @@
 import Home from "./Home";
 import "./styles.css";
-import Login from "./componentes/LoginUsuario/Login";
 import ConsultaCatalogo from "./componentes/ConsultaCatalogo";
 import CadastrarProduto from "./componentes/CadastrarProduto/idex";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -13,7 +12,6 @@ const App = () => {
       <Routes>
         <Route index element={<Home />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/Login" element={<Login />} />
         <Route path="/produtos/catalogo" element={<ConsultaCatalogo />} />
         <Route path="/produtos/cadastrar" element={<CadastrarProduto />} />
         <Route path="/produtos/upload" element={<UploadImagem />} />

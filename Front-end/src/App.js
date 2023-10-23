@@ -1,10 +1,10 @@
 import Home from "./Home";
 import "./styles.css";
 import ConsultaCatalogo from "./componentes/ConsultaCatalogo";
-import CadastrarProduto from "./componentes/CadastrarProduto/idex";
+import CadastrarProduto from "./componentes/CadastrarProduto/index";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import UploadImagem from "./componentes/UplodImagem";
+import UploadImagem from "./componentes/UploadImagem";
 
 const App = () => {
   return (

@@ -57,7 +57,7 @@ public class ProdutoServico implements IProdutoServico {
     public Optional<Produto> consultarPorId(String id) {
         logger.info(">>>>>> servico consulta por id chamado");
         long codProduto = Long.parseLong(id);
-        return repository.findById(codProduto);
+        return repositoryP.findById(codProduto);
 
     }
 

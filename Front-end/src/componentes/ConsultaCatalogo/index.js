@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ConverteBase64ToImage from "./ConverteBase64ToImage";
 import "./styles.css";
+import AtualizarProduto from "../AtualizarProduto";
 
 const ConsultaCatalogo = () => {
   const [produtos, setProdutos] = useState([]);
@@ -28,12 +29,15 @@ const ConsultaCatalogo = () => {
     return (
       <>
         <h3>Consulta Catalogo </h3>
+
         <p>Erro na consulta: {erro}</p>
       </>
     );
   return (
     <div>
+      <button>voltar</button>
       <h3>Consulta Catalogo</h3>
+
       <table id="produtos">
         <thead>
           <tr>
@@ -44,6 +48,7 @@ const ConsultaCatalogo = () => {
             <th>Valor Unitário</th>
             <th>Valor Total</th>
             <th>Imagem</th>
+            <th>alterar/excluir</th>
           </tr>
         </thead>
         <tbody>
@@ -56,9 +61,13 @@ const ConsultaCatalogo = () => {
               <td>{produto.valUnitario}</td>
               <td>{produto.valTotal}</td>
               <td>
-                <img src = {ConverteBase64ToImage(produto.imagem)}
-                alt = "Imagem"
-                />
+                <img src={ConverteBase64ToImage(produto.imagem)} alt="Imagem" />
+              </td>
+              <td>
+                <button className="alterar" onClick={AtualizarProduto}>
+                  Alterar
+                </button>
+                <button className="excluir">Excluir</button>
               </td>
             </tr>
           ))}

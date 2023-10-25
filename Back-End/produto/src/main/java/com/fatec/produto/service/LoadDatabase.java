@@ -42,7 +42,8 @@ public class LoadDatabase {
             // upload - obtem a imagem do c, atribui ao obj imagem e salva no db do servidor
             // ****************************************************************
 
-            Path path = Paths.get("F:\\Facul\\Web3_Saraiva\\IMG\\produto1.jpg");
+         
+            Path path = Paths.get("C:\\Users\\dti\\Downloads\\Controle-Estoque-main\\Controle-Estoque-main\\produto1.png");
             InputStream file = Files.newInputStream(path);
             byte[] arquivo1 = file.readAllBytes();
             Imagem imagem = new Imagem();
@@ -53,7 +54,7 @@ public class LoadDatabase {
             logger.info(">>> loaddatabase -> upload de arquivo imagem realizado =>" + arquivo1.length);
             imagemRepository.save(imagem);
             // ****************************************************************
-            path = Paths.get("F:\\Facul\\Web3_Saraiva\\IMG\\produto2.jpg");
+            path = Paths.get("C:\\\\Users\\\\dti\\\\Downloads\\\\Controle-Estoque-main\\\\Controle-Estoque-main\\\\produto2.png");
             file = Files.newInputStream(path);
             byte[] arquivo2 = file.readAllBytes();
             imagem = new Imagem();
@@ -64,7 +65,7 @@ public class LoadDatabase {
             logger.info(">>>>> loaddatabase -> upload de arquivo imagem realizado => " + arquivo2.length);
             imagemRepository.save(imagem);
             // ****************************************************************
-            path = Paths.get("F:\\Facul\\Web3_Saraiva\\IMG\\produto3.jpg");
+           /* path = Paths.get("F:\\Facul\\Web3_Saraiva\\IMG\\produto3.jpg");
             file = Files.newInputStream(path);
             byte[] arquivo3 = file.readAllBytes();
             imagem = new Imagem();
@@ -73,7 +74,7 @@ public class LoadDatabase {
             imagem.setCaminho("imagens/" + imagem.getNome());
             imagem.setArquivo(arquivo3);
             logger.info(">>>>> loaddatabase -> upload de arquivo imagem realizado => " + arquivo3.length);
-            imagemRepository.save(imagem);
+            imagemRepository.save(imagem);*/
 
         };
     }

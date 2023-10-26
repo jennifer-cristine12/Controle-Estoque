@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import UploadImagem from "./componentes/UploadImagem";
 
+import ExcluirProduto from "./componentes/ExcluirProduto";
 const App = () => {
   return (
     <Router>
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/produtos/cadastrar" element={<CadastrarProduto />} />
         <Route path="/produtos/upload" element={<UploadImagem />} />
         <Route path="/produtos/Alterar" element={<UploadImagem />} />
+        <Route path="/produtos/Excluir" element={<ExcluirProduto />} />
       </Routes>
     </Router>
   );

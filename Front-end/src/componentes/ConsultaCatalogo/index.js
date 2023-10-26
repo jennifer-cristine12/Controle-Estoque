@@ -3,8 +3,17 @@ import { Link, useNavigate } from "react-router-dom";
 import ConverteBase64ToImage from "./ConverteBase64ToImage";
 import "./styles.css";
 import AtualizarProduto from "../AtualizarProduto";
+import ExcluirProduto from "../ExcluirProduto";
 
 const ConsultaCatalogo = () => {
+  const handleVoltar = () => {
+    // Navegar para a rota "/home"
+    navigate("/home");
+  };
+  const navigate = useNavigate();
+  const ExcluirProduto1 = () => {
+    navigate("/Produtos/Excluir");
+  };
   const [produtos, setProdutos] = useState([]);
   const [erro, setErro] = useState(null);
   useEffect(() => {
@@ -23,6 +32,7 @@ const ConsultaCatalogo = () => {
         setErro(error.message);
       }
     };
+
     consulta();
   }, []);
   if (erro)
@@ -35,7 +45,7 @@ const ConsultaCatalogo = () => {
     );
   return (
     <div>
-      <button>voltar</button>
+      <button onClick={handleVoltar}>voltar</button>
       <h3>Consulta Catalogo</h3>
 
       <table id="produtos">
@@ -64,10 +74,10 @@ const ConsultaCatalogo = () => {
                 <img src={ConverteBase64ToImage(produto.imagem)} alt="Imagem" />
               </td>
               <td>
-                <button className="alterar" onClick={AtualizarProduto}>
-                  Alterar
+                <button className="alterar">Alterar</button>
+                <button className="excluir" onClick={ExcluirProduto1}>
+                  Excluir
                 </button>
-                <button className="excluir">Excluir</button>
               </td>
             </tr>
           ))}

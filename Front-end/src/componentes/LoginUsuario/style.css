@@ -1,7 +1,5 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
-
-  padding-left: 120px;
 }
 .container {
   width: 100%;
@@ -84,15 +82,15 @@ center {
   width: 180px;
   border-radius: 10px;
   color: white;
-  right: 150px;
+  right: 75px;
 }
 .login-form-btn:hover {
   background-color: deepskyblue;
   cursor: pointer;
 }
 .password-show {
-  position: absolute;
-  padding: 80px;
+  position: relative;
+  padding-right: 80px;
   top: 330px;
   left: 390px;
 }

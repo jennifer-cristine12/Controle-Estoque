@@ -24,27 +24,32 @@ function Login() {
             <form className="login-form">
               <div className="wrap-input">
                 <input
-                  required
                   className="input"
                   type="email"
                   placeholder="Digite seu email"
-                />
+                  required
+                ></input>
                 <br />
               </div>
 
               <div className="wrap-input">
                 <input
-                  required
                   id="password"
                   className="input"
                   type={show ? "text" : "password"}
                   placeholder="Digite sua senha"
-                />
+                  required
+                ></input>
               </div>
 
               <span className="focus-input" data-placeholder="password"></span>
 
-              <button className="login-form-btn" onClick={Home}>
+              <button
+                className="login-form-btn"
+                class="btn btn-primary"
+                type="submit"
+                onClick={Home}
+              >
                 Acessar
               </button>
             </form>

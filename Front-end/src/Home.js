@@ -7,11 +7,19 @@ const Home = () => {
     <div>
       <AppNavbar />
       {/* Outros componentes e rotas */}
-      <Link to="/produtos/catalogo">Consulta catalogo de produtos</Link>
-      <p></p>
-      <Link to="/produtos/cadastrar">Cadastrar produto</Link>
-      <p></p>
-      <Link to="/produtos/upload">Upload</Link>
+
+      <ul class="Produtos">
+        <Link to="/produtos/catalogo">Consulta catalogo de produtos</Link>
+        <p></p>
+        <Link to="/produtos/cadastrar">Cadastrar produto</Link>
+        <p></p>
+        <Link to="/produtos/upload">Upload</Link>
+        <p></p>
+      </ul>
+      <ul class="Usuario">
+        <Link to="/Cadastro">CadastrarUsuario</Link>
+      </ul>
+      <footer></footer>
     </div>
   );
 };

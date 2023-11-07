@@ -4,7 +4,8 @@ Paths.get(C:\Users\dti\Downloads\Controle-Estoque-main\\Controle-Estoque-main\\p
 # Utilização das imagens
 fazer download do repositorio como zip e extrair os arquivos
 # Execução front-end via code sandbox
-extrair a pasta Front End e carrega-la pelo CodeSandbox 
+  - extrair a pasta Front End e carrega-la pelo CodeSandbox
+  - Desinstalar e reinstalar a dependencia react-bootstraps
 # Execução via VS code
   - acessar o terminal de comando
   - code . //atalho para acesso ao vs code

@@ -12,14 +12,14 @@ import jakarta.persistence.Id;
 
 public class Produto {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)//auto increment
 
     private Long id;
     private String descricao;
     private String categoria;
     private int quantidadeU;
     private double valUnitario;
-    private double valTotal;
+    private double valTotal=quantidadeU*valUnitario;
 
     // Construtores
     // Construtor com todas as opções

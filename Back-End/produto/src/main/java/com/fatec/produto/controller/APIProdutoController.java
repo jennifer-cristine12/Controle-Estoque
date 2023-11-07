@@ -3,8 +3,6 @@ package com.fatec.produto.controller;
 import java.io.IOException;
 import java.util.Optional;
 
-import javax.swing.text.html.parser.Entity;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +23,9 @@ import com.fatec.produto.service.IProdutoServico;
 import com.fatec.produto.service.ImagemServico;
 
 @RestController
-@RequestMapping("/api/v1/produtos")
+
+
+@RequestMapping("/api/v1/produtos")//codigo refernte a imagem
 public class APIProdutoController {
     Logger logger = LogManager.getLogger(this.getClass());
     @Autowired
@@ -48,7 +48,7 @@ public class APIProdutoController {
     public ResponseEntity<Object> cadastraProduto(@RequestBody Produto p) {
         logger.info(">>>>>> apicontroller cadastrar produto iniciado");
         Optional<Produto> produto = produtoServico.cadastrar(p);
-        return ResponseEntity.status(HttpStatus.CREATED).body(produto.get());
+        return ResponseEntity.status(HttpStatus.CREATED).body(produto.isPresent());
     }
 
     @Autowired
@@ -76,4 +76,6 @@ public class APIProdutoController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Id invalido");
         }
     }
+
+    
 }

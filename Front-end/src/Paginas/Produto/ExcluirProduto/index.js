@@ -1,16 +1,28 @@
 import { useNavigate } from "react-router-dom";
-
+import AppNavbar from "/src/componentes/AppNavbar";
+import Button from "react-bootstrap/Button";
+import "./Styles.css";
+import Image from "react-bootstrap/Image";
+import Dropdown from "react-bootstrap/Dropdown";
 const ExcluirProduto = () => {
-  const navigate = useNavigate();
-  const handleVoltar = () => {
-    // Navegar para a rota "/home"
-    navigate("/home");
+  const Cadastrar = () => {
+    navigate("/Produtos/cadastrar");
   };
+  const navigate = useNavigate();
   return (
     <div>
-      <button onClick={handleVoltar}>voltar</button>
-      <h3>Consulta Catalogo</h3>
-
+      <h3>Consultar Catalogo</h3>
+      <AppNavbar />
+      <Button
+        onClick={Cadastrar}
+        variant="primary"
+        size="lg"
+        className="novo"
+        active
+      >
+        Novo produto
+      </Button>{" "}
+      <Button variant="secondary" size="lg" active></Button>
       <table id="produtos">
         <thead>
           <tr>
@@ -21,9 +33,33 @@ const ExcluirProduto = () => {
             <th>Valor Unitário</th>
             <th>Valor Total</th>
             <th>Imagem</th>
-            <th>alterar/excluir</th>
+            <th>Opções</th>
           </tr>
         </thead>
+        <tbody>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+              <Dropdown>
+                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                  <Image src="holder.js/100px250" fluid />
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item href="/produtos/Alterar">Editar</Dropdown.Item>
+                  <Dropdown.Item href="/produtos/excluir">
+                    Excluir
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </td>
+          </tr>
+        </tbody>
       </table>
     </div>
   );

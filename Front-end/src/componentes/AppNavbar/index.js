@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
-
-//import "./Styles.css";
+import "./Styles.css";
 import {
   Button,
   Collapse,
@@ -20,7 +19,7 @@ const AppNavbar = () => {
       <NavbarBrand tag={Link} to="/home">
         Home
       </NavbarBrand>
-      <NavbarBrand tag={Link} to="/Produtos">
+      <NavbarBrand tag={Link} to="/produtos/catalogo">
         Produtos
       </NavbarBrand>
       <NavbarBrand tag={Link} to="/Kits">
@@ -38,7 +37,7 @@ const AppNavbar = () => {
           <Dropdown.Menu>
             <Dropdown.Item href="/Login">login</Dropdown.Item>
             <Dropdown.Item href="/Cadastro">Cadastrar</Dropdown.Item>
-            <Dropdown.Item href="#/home">Sair</Dropdown.Item>
+            <Dropdown.Item href="/home">Sair</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
       </NavbarBrand>

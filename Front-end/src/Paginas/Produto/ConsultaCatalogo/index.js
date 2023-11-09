@@ -1,15 +1,18 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import ConverteBase64ToImage from "./ConverteBase64ToImage";
+import ConverteBase64ToImage from "/src/componentes/imagem/ConverteBase64ToImage";
 import "./styles.css";
-
+import AppNavbar from "/src/componentes/AppNavbar";
+import Button from "react-bootstrap/Button";
+import Dropdown from "react-bootstrap/Dropdown";
+import Image from "react-bootstrap/Image";
 const ConsultaCatalogo = () => {
-  const handleVoltar = () => {
-    // Navegar para a rota "/home"
-    navigate("/home");
+  const Cadastrar = () => {
+    navigate("/Produtos/cadastrar");
   };
   const navigate = useNavigate();
   const ExcluirProduto1 = () => {
+    alert("Deseja excluir o produto");
     navigate("/Produtos/Excluir");
   };
   const [produtos, setProdutos] = useState([]);
@@ -43,9 +46,18 @@ const ConsultaCatalogo = () => {
     );
   return (
     <div>
-      <button onClick={handleVoltar}>voltar</button>
       <h3>Consulta Catalogo</h3>
-
+      <AppNavbar />
+      <Button
+        onClick={Cadastrar}
+        variant="primary"
+        size="lg"
+        className="novo"
+        active
+      >
+        Novo produto
+      </Button>{" "}
+      <Button variant="secondary" size="lg" active></Button>
       <table id="produtos">
         <thead>
           <tr>
@@ -56,7 +68,7 @@ const ConsultaCatalogo = () => {
             <th>Valor Unitário</th>
             <th>Valor Total</th>
             <th>Imagem</th>
-            <th>alterar/excluir</th>
+            <th>opções</th>
           </tr>
         </thead>
         <tbody>
@@ -72,10 +84,19 @@ const ConsultaCatalogo = () => {
                 <img src={ConverteBase64ToImage(produto.imagem)} alt="Imagem" />
               </td>
               <td>
-                <button className="alterar">Alterar</button>
-                <button className="excluir" onClick={ExcluirProduto1}>
-                  Excluir
-                </button>
+                <Dropdown>
+                  <Dropdown.Toggle variant="success" id="dropdown-basic">
+                    <Image src="holder.js/100px250" fluid />
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                    <Dropdown.Item href="/produtos/Alterar">
+                      Editar
+                    </Dropdown.Item>
+                    <Dropdown.Item onClick={ExcluirProduto1}>
+                      Excluir
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
               </td>
             </tr>
           ))}

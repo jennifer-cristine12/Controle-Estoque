@@ -35,7 +35,7 @@ const AtualizarProduto = () => {
       <input
         type="text"
         placeholder="Descrição"
-        value={updatedProduct.descricao}
+        value={produto.descricao}
         onChange={(e) =>
           setUpdatedProduct({ ...updatedProduct, descricao: e.target.value })
         }
@@ -43,7 +43,7 @@ const AtualizarProduto = () => {
       <input
         type="text"
         placeholder="Categoria"
-        value={updatedProduct.descricao}
+        value={produto.categoria}
         onChange={(e) =>
           setUpdatedProduct({ ...updatedProduct, descricao: e.target.value })
         }
@@ -51,7 +51,7 @@ const AtualizarProduto = () => {
       <input
         type="text"
         placeholder="Quantidade"
-        value={updatedProduct.descricao}
+        value={produto.quantidadeU}
         onChange={(e) =>
           setUpdatedProduct({ ...updatedProduct, descricao: e.target.value })
         }
@@ -59,7 +59,7 @@ const AtualizarProduto = () => {
       <input
         type="text"
         placeholder="Valor unitario"
-        value={updatedProduct.descricao}
+        value={produto.valUnitario}
         onChange={(e) =>
           setUpdatedProduct({ ...updatedProduct, descricao: e.target.value })
         }
@@ -67,7 +67,7 @@ const AtualizarProduto = () => {
       <input
         type="text"
         placeholder="Valor Total"
-        value={updatedProduct.descricao}
+        value={produto.valTotal}
         onChange={(e) =>
           setUpdatedProduct({ ...updatedProduct, descricao: e.target.value })
         }

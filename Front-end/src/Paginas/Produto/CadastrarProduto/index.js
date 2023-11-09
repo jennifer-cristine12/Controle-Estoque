@@ -2,23 +2,63 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Container, Form, FormGroup, Input, Label } from "reactstrap";
 import AppNavbar from "/src/componentes/AppNavbar";
-
+import ConverteBase64ToImage from "/src/componentes/imagem/ConverteBase64ToImage";
 const CadastrarProduto = () => {
-  const navigate = useNavigate(); //navegar para a rota home
+  const [file, setFile] = useState(null);
+  const [id, setId] = useState("");
+  const handleFileChange = (event) => {
+    const selectedFile = event.target.files[0];
+    setFile(selectedFile);
+  };
+  const handleUpload = async () => {};
+
+  const handleIdChange = (event) => {
+    setId(event.target.value);
+  };
+
+  const navigate = useNavigate(); //navegardor de rotas
   const [descricao, setDescricao] = useState("");
   const [categoria, setCategoria] = useState("");
   const [quantidadeU, setQuantidadeU] = useState("");
   const [valUnitario, setValUnitario] = useState("");
   const [valTotal, setValTotal] = useState("");
   const [mensagem, setMensagem] = useState("");
+  const [produtos] = useState([]);
 
   const handleCadastrarProduto = async () => {
+    if (!file) {
+      alert("Selecione um arquivo antes de enviar.");
+      return;
+    }
+    if (!id) {
+      alert("Informe um ID antes de enviar.");
+      return;
+    }
+    const formData = new FormData();
+    formData.append("id", id);
+    formData.append("file", file);
+    try {
+      const response = await fetch(
+        "http://localhost:8080/api/v1/produtos/imadb",
+        {
+          method: "POST",
+          body: formData
+        }
+      );
+      if (response.ok) {
+        alert("Upload do arquivo concluído com sucesso!");
+      } else {
+        alert("Ocorreu um erro ao enviar o arquivo.");
+      }
+    } catch (error) {
+      alert("Ocorreu um erro ao enviar o arquivo.");
+    }
     const produto = {
       descricao,
       categoria,
       quantidadeU: parseInt(quantidadeU, 0), // Converter quantidade para número inteiro
       valUnitario: parseFloat(valUnitario), // Converter Valor Unitario para número
-      valTotal: parseFloat(valTotal) // Converter Valor Total para número
+      valTotal: parseFloat(valTotal) // Converter Valor Total para número, quantidade*valorU
     };
     try {
       const resposta = await fetch("http://localhost:8080/api/v1/produtos", {
@@ -42,7 +82,8 @@ const CadastrarProduto = () => {
     // Navegar para a rota "/home"
     navigate("/home");
   };
-  const title = <h2>{"Cadastar Produto"}</h2>;
+
+  const title = <h2>{"Cadastrar Produto"}</h2>;
   return (
     <div>
       <AppNavbar />
@@ -90,6 +131,19 @@ const CadastrarProduto = () => {
               onChange={(e) => setValTotal(e.target.value)}
             />
             <br />
+            <input type="file" accept=".jpg" onChange={handleFileChange} />
+            {produtos.map((produto) => (
+              <img src={ConverteBase64ToImage(produto.imagem)} alt="Imagem" />
+            ))}
+            ;
+            <input
+              type="text"
+              value={id}
+              onChange={handleIdChange}
+              placeholder="Informe o ID"
+            />
+            <button onClick={handleUpload}>Enviar</button>
+            <p></p>
             <Button color="primary" onClick={handleCadastrarProduto}>
               Cadastrar Produto
             </Button>{" "}

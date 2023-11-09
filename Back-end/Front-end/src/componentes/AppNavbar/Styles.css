@@ -1,0 +1,7 @@
+
+.d-flex justify-content-evenly{
+  responsive: true,
+  property: flex-direction,
+  class: flex,
+  values: row column row-reverse column-reverse
+}

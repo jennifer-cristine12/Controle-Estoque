@@ -3,6 +3,8 @@ package com.fatec.produto.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.http.ResponseEntity;
+
 import com.fatec.produto.model.Catalogo;
 import com.fatec.produto.model.Produto;
 
@@ -17,5 +19,7 @@ public interface IProdutoServico {
 
 	public Optional<Produto> atualizar(Long id, Produto produto);
 
-	public void excluir(Long id);
+	public ResponseEntity<Produto> excluir(Long id);
+
+	
 }

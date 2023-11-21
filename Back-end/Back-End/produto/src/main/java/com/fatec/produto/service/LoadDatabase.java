@@ -26,23 +26,26 @@ public class LoadDatabase {
 
     @Bean
     CommandLineRunner initDatabase(IProdutoRepository repository) {
+    	
         return args -> {
+        	
+        
         	String tipo = "produto";
             Produto produto1 = new Produto("KIT BANQUETA CONNECT PRETA ESTRUTURA 7024 PRETA K", tipo, 8, 247.46,
                     1979.98);
-            Produto produto2 = new Produto("KIT CADEIRA 319 EXECUTIVA BASE RETA METAL C/CAPA", tipo, 230, 303.26,
+           /* Produto produto2 = new Produto("KIT CADEIRA 319 EXECUTIVA BASE RETA METAL C/CAPA", tipo, 230, 303.26,
                     1979.68);
             Produto produto3 = new Produto("KIT CADEIRA 3019 C/CAPA PT C/ MEC 4125 BASE RETA M", tipo, 80, 356.72,
                     28537.60);
-
-            repository.saveAll(Arrays.asList(produto1, produto2, produto3));
-            logger.info(">>>>> loaddatabase -> cadastro de 3 produtos realizado.");
+*/
+            repository.saveAll(Arrays.asList(produto1));
+            logger.info(">>>>> loaddatabase -> cadastro de  realizado.");
 
             // ****************************************************************
             // upload - obtem a imagem do c, atribui ao obj imagem e salva no db do servidor
             // ****************************************************************
 
-            Path path = Paths.get("C:\\Users\\dti\\Downloads\\Controle-Estoque-main\\Controle-Estoque-main\\produto1.png");
+            Path path = Paths.get("res//produto1.png");
             InputStream file = Files.newInputStream(path);
             byte[] arquivo1 = file.readAllBytes();
             Imagem imagem = new Imagem();
@@ -50,7 +53,7 @@ public class LoadDatabase {
             imagem.setNome("produto1.jpg");
             imagem.setCaminho("imagens/" + imagem.getNome());
             imagem.setArquivo(arquivo1);
-            logger.info(">>> loaddatabase -> upload de arquivo imagem realizado =>" + arquivo1.length);
+            logger.info(">>> loaddatabase -> upload de arquivo imagem realizado =>" + arquivo1.length);//avisa no console que a imagem foi salva
             imagemRepository.save(imagem);
             // ****************************************************************
            /* path = Paths.get("F:\\Facul\\Web3_Saraiva\\IMG\\produto2.jpg");
@@ -74,7 +77,7 @@ public class LoadDatabase {
             imagem.setArquivo(arquivo3);
             logger.info(">>>>> loaddatabase -> upload de arquivo imagem realizado => " + arquivo3.length);
             imagemRepository.save(imagem);
-*/
-        };
-    }
-}
+
+        };*/
+    };
+}}

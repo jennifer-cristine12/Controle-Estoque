@@ -7,6 +7,9 @@ import java.util.Optional;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.fatec.produto.model.Catalogo;
@@ -27,8 +30,8 @@ public class ProdutoServico implements IProdutoServico {
 
         Catalogo c = null;
         List<Catalogo> lista = new ArrayList<Catalogo>();
-        List<Produto> listaP = repositoryP.findAll();
-        List<Imagem> listaI = imagemServico.getAll();
+        List<Produto> listaP = repositoryP.findAll();//referente aos produtos no loaddabase
+        List<Imagem> listaI = imagemServico.getAll();//image
         for (Produto p : listaP) {
             for (Imagem i : listaI) {
                 if (p.getId().equals(i.getId())) {
@@ -43,7 +46,7 @@ public class ProdutoServico implements IProdutoServico {
 
     @Override
     public List<Catalogo> consultaPorDescricao(String descricao) {
-        // TODO Auto-generated method stub
+        
         return null;
     }
 
@@ -51,6 +54,7 @@ public class ProdutoServico implements IProdutoServico {
     public Optional<Produto> cadastrar(Produto produto) {
         logger.info(">>> serviço cadastrar produto  >>>");
         return Optional.ofNullable(repositoryP.save(produto));
+        
     }
 
     @Override
@@ -61,14 +65,23 @@ public class ProdutoServico implements IProdutoServico {
 
     }
 
-    @Override
-    public Optional<Produto> atualizar(Long id, Produto produto) {
-        // TODO Auto-generated method stub
-        return Optional.empty();
-    }
+    
 
     @Override
-    public void excluir(Long id) {
-        // TODO Auto-generated method stub
+    public ResponseEntity<Produto> excluir(Long id) {
+        
+    	repositoryP.deleteById(id);
+    	logger.info(">>>>>> O produto foi removido");
+		return new ResponseEntity<Produto>(HttpStatus.OK);
     }
+
+	
+
+	@Override
+	public Optional<Produto> atualizar(Long id, Produto produto) {
+		logger.info(">>> serviço atualizar produto  >>>");
+		return Optional.ofNullable(repositoryP.save(produto));
+		
 }
+
+	}
